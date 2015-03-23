@@ -10,8 +10,8 @@ chmod a+x WordCount.java
 chmod a+x MedianOfLines.java
 
 # Compilation of the two files:
-javac WordCount.java
-javac MedianOfLines.java
+javac ./src/WordCount.java
+javac ./src/MedianOfLines.java
 
 # Finally, we would execute these files using the following commands. It will accept two arguments as the input.
 # First Argument will the be folder where it will be reading the the input text files.
