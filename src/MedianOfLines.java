@@ -46,27 +46,44 @@ public class MedianOfLines {
 		writer = new BufferedWriter(new FileWriter(outputFolder));
 		
 		
+		/*
+			Iterating through the list of files and storing the individual word and it's frequency in the HashMap variable created above.
+		*/
 		for(File fileItem: filesList){
+			
+			//Creating a Buffer Reader to read the data streams from the file.
 			BufferedReader readerBuff = new BufferedReader(new FileReader(fileItem));
+			
+			//Creating a variable to store the line being read.
 			String txtLine = null;
+			
+			//Iterating over all the lines in the file being currently read.
 			while ((txtLine = readerBuff.readLine()) != null) {
+				
+				//Reading only if the line has some words.
 				if(txtLine.length() != 0){
-					counter = counter + 1;
-					String[] word = txtLine.split("\\s+");
-					//String updatedWord = null;
 					
+					//Incrementing the counter variable.
+					counter = counter + 1;
+					
+					//Splitting the line into array of words. Here, we are splitting by "Space Character"
+					String[] word = txtLine.split("\\s+");
+					
+					//Adding the first time to the MaxHeap. Or else adding to the one with the least value of the root.
 					if(counter == 1 || (word.length <= maxHeap.peek()))
 						maxHeap.add((double) word.length);
 					else
 						minHeap.add((double) word.length);
 					
 					
+					//Moving elements from the one having greater size to the one having the lower size.
 					if (maxHeap.size() > minHeap.size() + 1)
 				        minHeap.add(maxHeap.remove());
 					else if(minHeap.size() > maxHeap.size() + 1)
 						maxHeap.add(minHeap.remove());
 					
 					
+					//Calculating the Median value from the heap.
 					if(minHeap.size() == maxHeap.size())
 						writer.write(String.valueOf(0.5 * (minHeap.peek() + maxHeap.peek())));
 					else if(minHeap.size() > maxHeap.size())
@@ -74,13 +91,15 @@ public class MedianOfLines {
 					else
 						writer.write(String.valueOf(maxHeap.peek()));
 					
+					//Entering a new line.
 					writer.newLine();
 					
 				}
 			}
+			//Closing the reader buffer.
 			readerBuff.close();
 		}
-		
+		//Closing the write stream.
 		writer.close();
 
 	}
