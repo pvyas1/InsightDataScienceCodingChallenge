@@ -6,8 +6,8 @@
 
 
 # Permissions are being granted to the files.
-chmod a+x WordCount.java
-chmod a+x MedianOfLines.java
+chmod a+x ./src/WordCount.java
+chmod a+x ./src/MedianOfLines.java
 
 # Compilation of the two files:
 javac ./src/WordCount.java
