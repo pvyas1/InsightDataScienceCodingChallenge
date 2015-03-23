@@ -80,7 +80,7 @@ public class WordCount {
 		}
 		
 		//Opening the specific output folder where the output file would be stored.
-		File outputFolder = new File(outputFilePaths);
+		File outputFolder = new File(outputFilePath);
 		
 		//Buffer variable to write into the file.
 		BufferedWriter writer = null;
